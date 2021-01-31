@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>预约</title>
+    <style>
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        min-height: 100vh;
+      }
+      input {
+        background: none;
+        outline: none;
+        border: none;
+      }
+      .book {
+        width: 100%;
+        min-height: 100vh;
+        position: relative;
+      }
+      .book-bg {
+        width: 100%;
+      }
+      .book-bg img {
+        width: 100%;
+      }
+      .book-content {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .book-content-header {
+        height: 120px;
+      }
+      .book-content-pane {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+      }
+      .book-content-info {
+        background-color: #fff;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.15);
+        border-radius: 5px;
+        height: 80px;
+        margin: 0 20px;
+        padding: 10px;
+        padding-left: 12px;
+      }
+      .book-content-title {
+        font-size: 14px;
+        color: #585858;
+        font-weight: bold;
+        margin-bottom: 10px;
+      }
+      .book-content-phone {
+        width: 98%;
+      }
+      .book-content-alarm {
+        margin-top: 12px;
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        font-size: 12px;
+      }
+      .book-content-other {
+        padding-top: 30px;
+        width: 100%;
+      }
+      .book-content-inspect {
+        width: 75%;
+        margin: 0 auto;
+        padding: 8px 0;
+        background: #272d29;
+        border-radius: 5px;
+        color: #fff;
+        text-align: center;
+        font-size: 10px;
+      }
+      .book-content-footer {
+        margin: 20px auto;
+        width: 70%;
+      }
+      .book-content-footer button {
+        border: 0 solid transparent;
+        outline: none;
+        width: 100%;
+        height: 40px;
+        border-radius: 20px;
+        background: #ff5722;
+        border-color: #ff5722;
+        color: #fff;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="book">
+      <div class="book-bg">
+        <img src="./head.png" />
+      </div>
+      <div class="book-content">
+        <div class="book-content-header"></div>
+        <div class="book-content-pane">
+          <div class="book-content-info">
+            <div class="book-content-title">请输入您的手机号</div>
+            <div>
+              <input class="book-content-phone" placeholder="手机号" />
+            </div>
+            <div class="book-content-alarm">
+              <span style="color: #f00;">输入不正确</span>
+              <span style="color: #ff5722;">如何获取正确信息？</span>
+            </div>
+          </div>
+          <div class="book-content-other">
+            <div class="book-content-inspect">验证失败，请核实您的信息</div>
+          </div>
+        </div>
+        <div class="book-content-footer">
+          <button>预 约</button>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
