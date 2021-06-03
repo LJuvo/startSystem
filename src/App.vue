@@ -35,7 +35,6 @@
 </template>
 
 <script>
-import { baseSiteUrl } from "./config/site.base"
 export default {
   components: {
 
@@ -46,12 +45,7 @@ export default {
     };
   },
   mounted() {
-    this.$axios({
-      url: baseSiteUrl + "api/list.php",
-      method: "get"
-    }).then(res => {
-      console.log("alarmArr", res);
-    });
+    
   },
   methods: {
 

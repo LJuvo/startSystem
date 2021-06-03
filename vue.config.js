@@ -17,6 +17,11 @@ module.exports = {
       title: "混沌数据中心",
       template: "src/public/index.html", // 模板来源
     },
+    book: {
+      entry: "src/module/book/main.js",
+      title: "预约",
+      template: "src/public/index.html", // 模板来源
+    },
   },
   devServer: {
     host: "localhost",
