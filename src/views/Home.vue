@@ -1,88 +1,96 @@
 <template>
-  <a-card title="测试验证集">
-    <a-card-grid style="width:25%;text-align:center">
-        <div>
-            <a-input v-model="formInline.user" placeholder="Username">
-                <a-icon slot="prefix" type="user" style="color:rgba(0,0,0,.25)" />
-            </a-input>
-            <a-input v-model="formInline.password" placeholder="Passwordd">
-                <a-icon slot="prefix" type="user" style="color:rgba(0,0,0,.25)" />
-            </a-input>
-            <a-button @click="postUser()">新建</a-button>
-            <a-button @click="postBook()">新建</a-button>
-        </div>
-    </a-card-grid>
-    <a-card-grid style="width:75%;text-align:center">
-        <a-row :gutter="16">
-      <a-col :span="8" v-for="(ele, index) in baseArr" :key="index">
-        <DataCell :title="ele.firstname"></DataCell>
-      </a-col>
-      <a-col :span="8">
-        <DataCell></DataCell>
-      </a-col>
-      <a-col :span="8">
-        <DataCell></DataCell>
-      </a-col>
-    </a-row>
-    </a-card-grid>
-  </a-card>
+  <a-layout-content
+    :style="{
+      background: '#0a0d11',
+      'min-height': '100%',
+    }"
+  >
+    <div class="ace-showcase pc-ace-showcase">
+      <home-header></home-header>
+      <home-content></home-content>
+    </div>
+    <!-- <a-card class="home-box">
+      <a-carousel class="mr-b" :dot-position="dotPosition">
+        <div style="background: #364d79;height: 400px;"><h3>1</h3></div>
+        <div style="background: #364d79;height: 400px;"><h3>2</h3></div>
+        <div style="background: #364d79;height: 400px;"><h3>3</h3></div>
+        <div style="background: #364d79;height: 400px;"><h3>4</h3></div>
+      </a-carousel>
+      <div class="search-box"><home-search></home-search></div>
+      <home-nav>
+        <div class="nav-element-cell"><div class="demo-element"></div></div>
+        <div class="nav-element-cell"><div class="demo-element"></div></div>
+        <div class="nav-element-cell"><div class="demo-element"></div></div>
+        <div class="nav-element-cell"><div class="demo-element"></div></div>
+        <div class="nav-element-cell"><div class="demo-element"></div></div>
+        <div class="nav-element-cell"><div class="demo-element"></div></div>
+        <div class="nav-element-cell"><div class="demo-element"></div></div>
+        <div class="nav-element-cell"><div class="demo-element"></div></div>
+      </home-nav>
+    </a-card> -->
+  </a-layout-content>
 </template>
 
 <script>
-import { baseSiteUrl } from "./../config/site.base";
-import DataCell from "./DataComps/DataCell";
+import HomeSearch from "@/components/search/homeSearch";
+import HomeNav from "@/components/nav/homeNav";
+import HomeHeader from "@/components/home/header";
+import HomeContent from "@/components/home/content";
 export default {
-    components: {
-        DataCell
-    },
-    data() {
-        return {
-            formInline: {},
-            baseArr: [],
-        };
-    },
-    mounted(){
-        this.fetchBaseList();
-    },
-    methods:{
-        fetchBaseList(){
-            this.$axios({
-                url: baseSiteUrl + "api/list.php",
-                method: "get"
-            }).then(res => {
-                console.log("alarmArr", res);
-                this.baseArr = res.data;
-            });
-        },
-        postUser(){
-            this.$axios({
-                url: "http://192.168.64.2/startStart/api/post.php",
-                method: "post",
-                data: {
-                    firstname: "AAA",
-                    lastname: "ABB"
-                }
-            }).then(res => {
-                console.log("alarmArr", res);
-                // this.baseArr = res.data;
-            });
-        },
-        postBook(){
-            this.$axios({
-                url: "http://test2.acgbear.cn/api/book.php",
-                method: "post",
-                data: {
-                    personname: "花开全季",
-                    phone: "13024344909"
-                }
-            }).then(res => {
-                console.log("alarmArr", res);
-                // this.baseArr = res.data;
-            });
-        }
-    }
+  components: {
+    "home-search": HomeSearch,
+    "home-nav": HomeNav,
+    "home-header": HomeHeader,
+    "home-content": HomeContent,
+  },
+  data() {
+    return {
+      dotPosition: "right",
+    };
+  },
+  mounted() {},
+  methods: {},
 };
 </script>
 <style lang="less" scoped>
+.ant-carousel > .slick-slide {
+  text-align: center;
+  height: 160px;
+  line-height: 160px;
+  background: #364d79;
+  overflow: hidden;
+}
 
+.ant-carousel > .slick-slide h3 {
+  color: #fff;
+}
+
+.home-box {
+  position: relative;
+  background: #0a0d11;
+}
+.search-box {
+  width: 100%;
+  height: 400px;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.mr-b {
+  margin-bottom: 20px;
+}
+.demo-element {
+  margin: 10px;
+  width: calc(100% - 20px);
+  height: calc(100% - 20px);
+  background: #eee;
+}
+
+.ace-showcase.pc-ace-showcase {
+  background: #0b0d10;
+}
 </style>
