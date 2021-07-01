@@ -1,24 +1,19 @@
 <template>
-  <base-layout>
-    <home-nav></home-nav>
+  <base-layout activeIndex="1">
     <div class="amy-base m-bg-white">
-      <div class="amy-base-wrapper a-space-32-top a-space-32-bottom">
-        <home-industry></home-industry>
+      <div class="amy-base-wrapper a-space-12-top a-space-12-bottom">
+        <works-nav></works-nav>
       </div>
     </div>
-    <div class="amy-base m-bg-white">
-      <div class="amy-base-wrapper a-flex-row-center">
-        <home-tab></home-tab>
-      </div>
-    </div>
-    <div class="amy-base a-space-32-top a-space-32-bottom">
+
+    <div class="amy-base a-space-12-top a-space-32-bottom">
       <div class="amy-base-wrapper">
         <home-card-list></home-card-list>
       </div>
     </div>
     <div class="amy-base">
       <div class="amy-base-wrapper a-flex-row-center a-space-32-bottom">
-        <amy-btn size="large">查看更多</amy-btn>
+        <amy-btn size="large">分页</amy-btn>
       </div>
     </div>
     <div class="amy-base m-bg-white">
@@ -31,12 +26,12 @@
 
 <script>
 import BaseLayout from "@/components/layout/baseLayout.vue";
-// import CourseDetails from "./course/details.vue";
 import HomeNav from "./home/nav.vue";
 import HomeIndustry from "./home/industry.vue";
 import HomeTab from "./home/tab.vue";
 import HomeCardList from "./home/content.vue";
 import HomeAdver from "./home/adver.vue";
+import WorksNav from "./works/nav.vue";
 export default {
   components: {
     "base-layout": BaseLayout,
@@ -45,7 +40,7 @@ export default {
     "home-tab": HomeTab,
     "home-card-list": HomeCardList,
     "home-adver": HomeAdver,
-    //     "course-details": CourseDetails,
+    "works-nav": WorksNav,
   },
   data() {
     return {};
