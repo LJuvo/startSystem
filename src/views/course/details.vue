@@ -243,22 +243,22 @@
             <!---->
             <div
               data-v-6d690d4a=""
-              class="cg-carousel cg-cos-teacher-swiper ivu-carousel dark"
+              class="cg-carousel cg-cos-teacher-swiper amy-carousel dark"
             >
               <button
                 type="button"
-                class="left ivu-carousel-arrow ivu-carousel-arrow-never"
+                class="left amy-carousel-arrow amy-carousel-arrow-never"
               >
-                <i class="ivu-icon ivu-icon-ios-arrow-back"></i>
+                <i class="amy-icon amy-icon-ios-arrow-back"></i>
               </button>
-              <div class="ivu-carousel-list">
+              <div class="amy-carousel-list">
                 <div
-                  class="ivu-carousel-track higher"
+                  class="amy-carousel-track higher"
                   style="width: 260px; transform: translate3d(0px, 0px, 0px); transition: transform 500ms ease 0s; visibility: visible;"
                 >
                   <div
                     data-v-6d690d4a=""
-                    class="cg-cos-teacher-cell cg-f-fs-c cg-fd-c ivu-carousel-item"
+                    class="cg-cos-teacher-cell cg-f-fs-c cg-fd-c amy-carousel-item"
                     style="width: 260px; height: 172px; left: 0px;"
                   >
                     <div data-v-6d690d4a="" class="teacher-avatar-wrap mb16">
@@ -317,12 +317,12 @@
               </div>
               <button
                 type="button"
-                class="right ivu-carousel-arrow ivu-carousel-arrow-never"
+                class="right amy-carousel-arrow amy-carousel-arrow-never"
               >
-                <i class="ivu-icon ivu-icon-ios-arrow-forward"></i>
+                <i class="amy-icon amy-icon-ios-arrow-forward"></i>
               </button>
-              <ul class="ivu-carousel-dots ivu-carousel-dots-none">
-                <li class="ivu-carousel-active">
+              <ul class="amy-carousel-dots amy-carousel-dots-none">
+                <li class="amy-carousel-active">
                   <button type="button" class=""></button>
                 </li>
               </ul>

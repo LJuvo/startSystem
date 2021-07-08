@@ -1,54 +1,65 @@
 <template>
   <base-layout>
-    <home-nav></home-nav>
-    <div class="amy-base m-bg-white">
-      <div class="amy-base-wrapper a-space-32-top a-space-32-bottom">
-        <home-industry></home-industry>
-      </div>
-    </div>
-    <div class="amy-base m-bg-white">
-      <div class="amy-base-wrapper a-flex-row-center">
-        <home-tab></home-tab>
-      </div>
-    </div>
-    <div class="amy-base a-space-32-top a-space-32-bottom">
-      <div class="amy-base-wrapper">
-        <home-card-list></home-card-list>
-      </div>
-    </div>
-    <div class="amy-base">
-      <div class="amy-base-wrapper a-flex-row-center a-space-32-bottom">
-        <amy-btn size="large">查看更多</amy-btn>
-      </div>
-    </div>
-    <div class="amy-base m-bg-white">
-      <div class="amy-base-wrapper a-space-32-top a-space-32-bottom">
-        <home-adver></home-adver>
-      </div>
+    <div class="">
+      <Badge status="default" text="Default" />
+      <br />
+      <Badge status="processing" text="Processing" />
+      <br />
+      <Badge status="warning" text="Warning" />
+      <br />
+      <Badge color="blue" text="blue" />
+      <Badge color="green" text="green" />
+      <Badge color="red" text="red" />
+      <Badge color="yellow" text="yellow" />
+      <Badge color="pink" text="pink" />
+      <Badge color="magenta" text="magenta" />
+      <Badge color="volcano" text="volcano" />
+      <Badge color="orange" text="orange" />
+      <Badge color="gold" text="gold" />
+      <Badge color="lime" text="lime" />
+      <Badge color="cyan" text="cyan" />
+      <Badge color="geekblue" text="geekblue" />
+      <Badge color="purple" text="purple" />
+      <br />
+      <Badge color="#2db7f5" text="#2db7f5" />
+      <Badge color="#f50" text="#f50" />
     </div>
   </base-layout>
 </template>
 
 <script>
 import BaseLayout from "@/components/layout/baseLayout.vue";
-// import CourseDetails from "./course/details.vue";
-import HomeNav from "./home/nav.vue";
-import HomeIndustry from "./home/industry.vue";
-import HomeTab from "./home/tab.vue";
-import HomeCardList from "./home/content.vue";
-import HomeAdver from "./home/adver.vue";
+
 export default {
   components: {
     "base-layout": BaseLayout,
-    "home-nav": HomeNav,
-    "home-industry": HomeIndustry,
-    "home-tab": HomeTab,
-    "home-card-list": HomeCardList,
-    "home-adver": HomeAdver,
-    //     "course-details": CourseDetails,
   },
   data() {
     return {};
+  },
+  mounted() {
+    // 项目其他页面使用跟小程序一样使用Bmob对象即可，例如：
+    Bmob.User.login("Juvos", "juvos")
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    // let params = {
+    //   username: "bmob2018",
+    //   password: "bmob2018",
+    //   email: "bmob2018@bmob.cn",
+    //   phone: "13711166567",
+    // };
+    // Bmob.User.register(params)
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
   },
 };
 </script>

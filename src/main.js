@@ -2,22 +2,26 @@ import Vue from "vue";
 import App from "./App.vue";
 import store from "./store";
 import router from "./router";
+import _ from "lodash";
 
 import axios from "axios";
+// 打开 main.js
+import Bmob from "hydrogen-js-sdk";
 
-import BaseButton from "@/components/button";
+// Bmob.debug(true);
+Bmob.initialize("4509c12b05a95f1c", "taisha");
 
-const AmyUI = {
-  "amy-btn": BaseButton,
-};
+Vue.prototype._ = _;
+// 挂载到全局使用
+Vue.prototype.Bmob = Bmob;
+import iView from "iview";
+import "iview/dist/styles/iview.css";
+
+Vue.use(iView);
 
 Vue.prototype.$axios = axios;
 
 Vue.config.productionTip = false;
-
-Object.keys(AmyUI).forEach((key) => {
-  Vue.component(key, AmyUI[key]);
-});
 
 new Vue({
   store,

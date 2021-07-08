@@ -1,142 +1,143 @@
 .slide-motion(@className, @keyframeName) {
-    .make-motion(@className, @keyframeName);
-    .@{className}-enter-active, .@{className}-appear {
-        opacity: 0;
-        animation-timing-function: @ease-in-out;
-    }
-    .@{className}-leave-active {
-        animation-timing-function: @ease-in-out;
-    }
+  .make-motion(@className, @keyframeName);
+  .@{className}-enter-active,
+  .@{className}-appear {
+    opacity: 0;
+    animation-timing-function: @ease-in-out;
+  }
+  .@{className}-leave-active {
+    animation-timing-function: @ease-in-out;
+  }
 }
 
-.slide-motion(transition-drop, ivuTransitionDrop);
-.slide-motion(slide-up, ivuSlideUp);
-.slide-motion(slide-down, ivuSlideDown);
-.slide-motion(slide-left, ivuSlideLeft);
-.slide-motion(slide-right, ivuSlideRight);
+.slide-motion(transition-drop, amyTransitionDrop);
+.slide-motion(slide-up, amySlideUp);
+.slide-motion(slide-down, amySlideDown);
+.slide-motion(slide-left, amySlideLeft);
+.slide-motion(slide-right, amySlideRight);
 
-@keyframes ivuTransitionDropIn {
-    0% {
-        opacity: 0;
-        transform: scaleY(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: scaleY(1);
-    }
+@keyframes amyTransitionDropIn {
+  0% {
+    opacity: 0;
+    transform: scaleY(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
 }
 
-@keyframes ivuTransitionDropOut {
-    0% {
-        opacity: 1;
-        transform: scaleY(1);
-    }
-    100% {
-        opacity: 0;
-        transform: scaleY(0.8);
-    }
+@keyframes amyTransitionDropOut {
+  0% {
+    opacity: 1;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scaleY(0.8);
+  }
 }
 
-@keyframes ivuSlideUpIn {
-    0% {
-        opacity: 0;
-        transform-origin: 0% 0%;
-        transform: scaleY(.8);
-    }
-    100% {
-        opacity: 1;
-        transform-origin: 0% 0%;
-        transform: scaleY(1);
-    }
+@keyframes amySlideUpIn {
+  0% {
+    opacity: 0;
+    transform-origin: 0% 0%;
+    transform: scaleY(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform-origin: 0% 0%;
+    transform: scaleY(1);
+  }
 }
 
-@keyframes ivuSlideUpOut {
-    0% {
-        opacity: 1;
-        transform-origin: 0% 0%;
-        transform: scaleY(1);
-    }
-    100% {
-        opacity: 0;
-        transform-origin: 0% 0%;
-        transform: scaleY(.8);
-    }
+@keyframes amySlideUpOut {
+  0% {
+    opacity: 1;
+    transform-origin: 0% 0%;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 0% 0%;
+    transform: scaleY(0.8);
+  }
 }
 
-@keyframes ivuSlideDownIn {
-    0% {
-        opacity: 0;
-        transform-origin: 100% 100%;
-        transform: scaleY(.8);
-    }
-    100% {
-        opacity: 1;
-        transform-origin: 100% 100%;
-        transform: scaleY(1);
-    }
+@keyframes amySlideDownIn {
+  0% {
+    opacity: 0;
+    transform-origin: 100% 100%;
+    transform: scaleY(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform-origin: 100% 100%;
+    transform: scaleY(1);
+  }
 }
 
-@keyframes ivuSlideDownOut {
-    0% {
-        opacity: 1;
-        transform-origin: 100% 100%;
-        transform: scaleY(1);
-    }
-    100% {
-        opacity: 0;
-        transform-origin: 100% 100%;
-        transform: scaleY(.8);
-    }
+@keyframes amySlideDownOut {
+  0% {
+    opacity: 1;
+    transform-origin: 100% 100%;
+    transform: scaleY(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 100% 100%;
+    transform: scaleY(0.8);
+  }
 }
 
-@keyframes ivuSlideLeftIn {
-    0% {
-        opacity: 0;
-        transform-origin: 0% 0%;
-        transform: scaleX(.8);
-    }
-    100% {
-        opacity: 1;
-        transform-origin: 0% 0%;
-        transform: scaleX(1);
-    }
+@keyframes amySlideLeftIn {
+  0% {
+    opacity: 0;
+    transform-origin: 0% 0%;
+    transform: scaleX(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform-origin: 0% 0%;
+    transform: scaleX(1);
+  }
 }
 
-@keyframes ivuSlideLeftOut {
-    0% {
-        opacity: 1;
-        transform-origin: 0% 0%;
-        transform: scaleX(1);
-    }
-    100% {
-        opacity: 0;
-        transform-origin: 0% 0%;
-        transform: scaleX(.8);
-    }
+@keyframes amySlideLeftOut {
+  0% {
+    opacity: 1;
+    transform-origin: 0% 0%;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 0% 0%;
+    transform: scaleX(0.8);
+  }
 }
 
-@keyframes ivuSlideRightIn {
-    0% {
-        opacity: 0;
-        transform-origin: 100% 0%;
-        transform: scaleX(.8);
-    }
-    100% {
-        opacity: 1;
-        transform-origin: 100% 0%;
-        transform: scaleX(1);
-    }
+@keyframes amySlideRightIn {
+  0% {
+    opacity: 0;
+    transform-origin: 100% 0%;
+    transform: scaleX(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform-origin: 100% 0%;
+    transform: scaleX(1);
+  }
 }
 
-@keyframes ivuSlideRightOut {
-    0% {
-        opacity: 1;
-        transform-origin: 100% 0%;
-        transform: scaleX(1);
-    }
-    100% {
-        opacity: 0;
-        transform-origin: 100% 0%;
-        transform: scaleX(.8);
-    }
+@keyframes amySlideRightOut {
+  0% {
+    opacity: 1;
+    transform-origin: 100% 0%;
+    transform: scaleX(1);
+  }
+  100% {
+    opacity: 0;
+    transform-origin: 100% 0%;
+    transform: scaleX(0.8);
+  }
 }

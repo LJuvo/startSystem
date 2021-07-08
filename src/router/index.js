@@ -9,6 +9,7 @@ const routes = [
     path: "/",
     name: "HomePage",
     title: "首页",
+    redirect: "/exam",
     component: () => import("@/views/Home.vue"),
   },
   {
@@ -48,6 +49,13 @@ const routes = [
     title: "",
     description: "社区文章内容页",
     component: () => import("@/views/Chat.vue"),
+  },
+  {
+    path: "/exam",
+    name: "题库",
+    title: "",
+    description: "题库",
+    component: () => import("@/views/Exam.vue"),
   },
   {
     path: "/base",
