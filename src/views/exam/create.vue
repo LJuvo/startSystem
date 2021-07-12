@@ -71,6 +71,12 @@ export default {
   },
   methods: {
     addExam() {
+      console.log(
+        "similar('黑衣人3','mmm黑豹') ->",
+        this.similar("黑衣人3", "豹人")
+      );
+      return;
+      if (!this.examQuestion) return this.$Message.warning(`请输入题目！`);
       if (
         _.find(this.examData, (o) => {
           return o.question == this.examQuestion;
@@ -132,6 +138,38 @@ export default {
         .catch((err) => {
           console.log("fallback ->", err);
         });
+    },
+    similar(a, b) {
+      if (!a || !b) {
+        return 0;
+      }
+      if (a.length > b.length) {
+        var t = b;
+        b = a;
+        a = t;
+      } // 保证 a <= b
+      var al = a.length,
+        bl = b.length;
+      var mp = []; // 一个表
+      var i, j, ai, lt, tmp; // ai：字符串a的第i个字符。 lt：左上角的值。 tmp：暂存新的值。
+      for (i = 0; i <= bl; i++) {
+        mp[i] = i;
+      }
+      for (i = 1; i <= al; i++) {
+        ai = a.charAt(i - 1);
+        lt = mp[0];
+        mp[0] = mp[0] + 1;
+        for (j = 1; j <= bl; j++) {
+          tmp = Math.min(
+            mp[j] + 1,
+            mp[j - 1] + 1,
+            lt + (ai == b.charAt(j - 1) ? 0 : 1)
+          );
+          lt = mp[j];
+          mp[j] = tmp;
+        }
+      }
+      return 1 - mp[bl] / bl;
     },
   },
 };

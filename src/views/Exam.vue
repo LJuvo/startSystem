@@ -1,10 +1,14 @@
 <template>
-  <base-layout>
+  <base-layout activeIndex="7">
     <section class="exam-layout a-space-32 a-flex-row-between">
       <div class="exam-menu">
-        <menu-manager></menu-manager>
+        <menu-manager
+          :menu="examMenu"
+          :initIndex="1"
+          @on-check="checkMenuCell($event)"
+        ></menu-manager>
       </div>
-      <div class="exam-content">
+      <div class="exam-content" v-if="examPageType === 'list'">
         <base-title>新增题目</base-title>
         <exam-create
           :examData="examDataArr"
@@ -12,6 +16,10 @@
         ></exam-create>
         <base-title>题库列表</base-title>
         <exam-list ref="examList" @on-fetch="fetchExam($event)"></exam-list>
+      </div>
+      <div class="exam-content" v-if="examPageType === 'exam'">
+        <base-title>试题</base-title>
+        <exam-question></exam-question>
       </div>
     </section>
   </base-layout>
@@ -29,10 +37,16 @@ export default {
     "base-title": BaseTitle,
     "exam-list": () => import("./exam/listFrontPage"),
     "exam-create": () => import("./exam/create"),
+    "exam-question": () => import("./exam/questionPage"),
   },
   data() {
     return {
+      examMenu: [
+        { label: "题目列表", icon: "logo-freebsd-devil", key: "list" },
+        { label: "开始答题", icon: "logo-freebsd-devil", key: "exam" },
+      ],
       examDataArr: [],
+      examPageType: "exam",
     };
   },
   mounted() {
@@ -65,6 +79,9 @@ export default {
     createExam(val) {
       this.examDataArr.push(val);
       this.$refs.examList.addExamToList(this.examDataArr);
+    },
+    checkMenuCell(val) {
+      this.examPageType = val.key;
     },
   },
 };

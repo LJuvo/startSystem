@@ -1,7 +1,7 @@
 <template>
   <div class="menu-manager">
     <div class="menu-manager-header">
-      <div class="menu-manager-header-title">题库管理</div>
+      <div class="menu-manager-header-title">{{ label }}</div>
     </div>
     <div
       class="menu-manager-cell"
@@ -18,16 +18,20 @@
 <script>
 export default {
   props: {
+    label: {
+      type: String,
+      default: "题库管理",
+    },
     menu: {
       type: Array,
       default: () => {
         return [
-          { label: "新增题目", icon: "logo-freebsd-devil", key: "create" },
           { label: "题目列表", icon: "logo-freebsd-devil", key: "list" },
           { label: "开始答题", icon: "logo-freebsd-devil", key: "exam" },
         ];
       },
     },
+    initIndex: 0,
   },
   data() {
     return {
@@ -35,7 +39,7 @@ export default {
     };
   },
   mounted() {
-    this.checkMenuCell(0);
+    this.checkMenuCell(this.initIndex);
   },
   methods: {
     checkMenuCell(index) {

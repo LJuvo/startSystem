@@ -22,16 +22,20 @@ export default {
       type: Array,
       default: () => {
         return [
-          { label: "控制台", path: "", icon: "md-analytics" },
-          { label: "推荐", path: "", icon: "md-analytics" },
-          { label: "内容页", path: "", icon: "md-analytics" },
-          { label: "单页", path: "", icon: "md-analytics" },
-          { label: "媒体库", path: "", icon: "md-analytics" },
-          { label: "用户库", path: "", icon: "md-analytics" },
-          { label: "系统", path: "", icon: "md-analytics" },
-          { label: "题库", path: "", icon: "md-analytics" },
+          { label: "控制台", path: "/", icon: "md-analytics" },
+          { label: "推荐", path: "/features", icon: "md-analytics" },
+          { label: "内容页", path: "/content", icon: "md-analytics" },
+          { label: "单页", path: "/pages", icon: "md-analytics" },
+          { label: "媒体库", path: "/media", icon: "md-analytics" },
+          { label: "用户库", path: "/person", icon: "md-analytics" },
+          { label: "系统", path: "/system", icon: "md-analytics" },
+          { label: "题库", path: "/exam", icon: "md-analytics" },
         ];
       },
+    },
+    activeIndex: {
+      type: String,
+      default: "0",
     },
   },
   data() {
@@ -40,13 +44,15 @@ export default {
     };
   },
   mounted() {
-    this.checkMenuCell(7);
+    this.checkMenuCell(parseInt(this.activeIndex));
   },
   methods: {
     checkMenuCell(index) {
       const temp = JSON.parse(JSON.stringify(this.menu));
       temp[index].checked = true;
       this.menuArr = temp;
+      if (this.activeIndex !== index + "")
+        this.$router.push({ path: temp[index].path });
     },
   },
 };

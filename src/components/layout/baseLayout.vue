@@ -1,7 +1,7 @@
 <template>
   <div class="base-layout">
     <div class="base-layout-menu">
-      <base-menu></base-menu>
+      <base-menu :activeIndex="activeIndex"></base-menu>
     </div>
     <div class="m-bg-default base-layout-content">
       <base-header :activeIndex="activeIndex"></base-header>

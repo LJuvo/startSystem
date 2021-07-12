@@ -1,52 +1,56 @@
 <template>
   <base-layout>
-    <div class="">
-      <Badge status="default" text="Default" />
-      <br />
-      <Badge status="processing" text="Processing" />
-      <br />
-      <Badge status="warning" text="Warning" />
-      <br />
-      <Badge color="blue" text="blue" />
-      <Badge color="green" text="green" />
-      <Badge color="red" text="red" />
-      <Badge color="yellow" text="yellow" />
-      <Badge color="pink" text="pink" />
-      <Badge color="magenta" text="magenta" />
-      <Badge color="volcano" text="volcano" />
-      <Badge color="orange" text="orange" />
-      <Badge color="gold" text="gold" />
-      <Badge color="lime" text="lime" />
-      <Badge color="cyan" text="cyan" />
-      <Badge color="geekblue" text="geekblue" />
-      <Badge color="purple" text="purple" />
-      <br />
-      <Badge color="#2db7f5" text="#2db7f5" />
-      <Badge color="#f50" text="#f50" />
-    </div>
+    <section class="exam-layout a-space-32 a-flex-row-between">
+      <div class="exam-menu">
+        <menu-manager
+          :menu="examMenu"
+          :initIndex="0"
+          @on-check="checkMenuCell($event)"
+        ></menu-manager>
+      </div>
+      <div class="exam-content">
+        <base-title>控制台</base-title>
+        <i-editor v-model="content"></i-editor>
+
+        <base-title>预览</base-title>
+        <preview-md :content="content"></preview-md>
+      </div>
+    </section>
   </base-layout>
 </template>
 
 <script>
 import BaseLayout from "@/components/layout/baseLayout.vue";
+import MenuManager from "@/components/menu/manager.vue";
+import BaseTitle from "@/components/title/base.vue";
 
 export default {
   components: {
     "base-layout": BaseLayout,
+    "menu-manager": MenuManager,
+    "base-title": BaseTitle,
+    "preview-md": () => import("./home/preview.vue"),
   },
   data() {
-    return {};
+    return {
+      examMenu: [
+        { label: "题目列表", icon: "logo-freebsd-devil", key: "list" },
+        { label: "开始答题", icon: "logo-freebsd-devil", key: "exam" },
+      ],
+      examDataArr: [],
+      examPageType: "exam",
+      content: "",
+    };
   },
   mounted() {
-    // 项目其他页面使用跟小程序一样使用Bmob对象即可，例如：
-    Bmob.User.login("Juvos", "juvos")
-      .then((res) => {
-        console.log(res);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-
+    // // 项目其他页面使用跟小程序一样使用Bmob对象即可，例如：
+    // Bmob.User.login("Juvos", "juvos")
+    //   .then((res) => {
+    //     console.log(res);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
     // let params = {
     //   username: "bmob2018",
     //   password: "bmob2018",
@@ -61,6 +65,36 @@ export default {
     //     console.log(err);
     //   });
   },
+  methods: {
+    fetchExam(val) {
+      this.examDataArr = val;
+    },
+    createExam(val) {
+      this.examDataArr.push(val);
+      this.$refs.examList.addExamToList(this.examDataArr);
+    },
+    checkMenuCell(val) {
+      this.examPageType = val.key;
+    },
+  },
 };
 </script>
-<style lang="less" scoped></style>
+<style lang="less" scoped>
+.exam-layout {
+  height: 100%;
+}
+.exam-menu {
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 0 0 10px 0 rgba(128, 145, 165, 20%);
+  margin-right: 20px;
+}
+.exam-content {
+  flex: 1;
+  height: 100%;
+  background: #ffffff;
+  box-shadow: 0 0 10px 0 rgba(128, 145, 165, 20%);
+  padding: 20px;
+  overflow: auto;
+}
+</style>
