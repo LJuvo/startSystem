@@ -6,20 +6,6 @@
     }"
   >
     <div class="release-box">
-      <!-- <a-card>
-      <a-card-grid style="width:75%;height: 100%"> </a-card-grid>
-      <a-card-grid style="width:25%;text-align:center">
-        <a-card style="width: 100%">
-          <template slot="actions" class="ant-card-actions">
-            <a-icon key="setting" type="setting" />
-            <a-icon key="edit" type="edit" />
-            <a-icon key="ellipsis" type="ellipsis" />
-          </template>
-          <a-card-meta title="新建数据库"> </a-card-meta>
-        </a-card>
-      </a-card-grid>
-    </a-card> -->
-
       <div class="release-box-content">
         col-18 col-push-6
       </div>

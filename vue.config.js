@@ -4,22 +4,16 @@ function resolve(dir) {
 }
 module.exports = {
   publicPath: "/",
-  chainWebpack: config => {
+  chainWebpack: (config) => {
     config.resolve.alias
       .set("@", resolve("./src"))
       .set("components", resolve("./src/components"));
     //set第一个参数：设置的别名，第二个参数：设置的路径
   },
   pages: {
-    
     index: {
       entry: "src/main.js",
       title: "混沌数据中心",
-      template: "src/public/index.html", // 模板来源
-    },
-    book: {
-      entry: "src/module/book/main.js",
-      title: "预约",
       template: "src/public/index.html", // 模板来源
     },
   },
@@ -28,15 +22,15 @@ module.exports = {
     port: 8000,
     https: false,
     hotOnly: false,
-    proxy: null // 设置代理
+    proxy: null, // 设置代理
   },
   // 第三方插件配置
   pluginOptions: {
-    'style-resources-loader': {
-      preProcessor: 'less',
+    "style-resources-loader": {
+      preProcessor: "less",
       patterns: [
-        path.resolve(__dirname, './src/less/variables.less') // 变量文件位置
-      ]
-      }
-  }
+        path.resolve(__dirname, "./src/less/variables.less"), // 变量文件位置
+      ],
+    },
+  },
 };

@@ -1,7 +1,6 @@
 <template>
   <a-layout-content
     :style="{
-      background: '#0a0d11',
       'min-height': '100%',
     }"
   >
@@ -9,25 +8,6 @@
       <home-header></home-header>
       <home-content></home-content>
     </div>
-    <!-- <a-card class="home-box">
-      <a-carousel class="mr-b" :dot-position="dotPosition">
-        <div style="background: #364d79;height: 400px;"><h3>1</h3></div>
-        <div style="background: #364d79;height: 400px;"><h3>2</h3></div>
-        <div style="background: #364d79;height: 400px;"><h3>3</h3></div>
-        <div style="background: #364d79;height: 400px;"><h3>4</h3></div>
-      </a-carousel>
-      <div class="search-box"><home-search></home-search></div>
-      <home-nav>
-        <div class="nav-element-cell"><div class="demo-element"></div></div>
-        <div class="nav-element-cell"><div class="demo-element"></div></div>
-        <div class="nav-element-cell"><div class="demo-element"></div></div>
-        <div class="nav-element-cell"><div class="demo-element"></div></div>
-        <div class="nav-element-cell"><div class="demo-element"></div></div>
-        <div class="nav-element-cell"><div class="demo-element"></div></div>
-        <div class="nav-element-cell"><div class="demo-element"></div></div>
-        <div class="nav-element-cell"><div class="demo-element"></div></div>
-      </home-nav>
-    </a-card> -->
   </a-layout-content>
 </template>
 
@@ -44,9 +24,7 @@ export default {
     "home-content": HomeContent,
   },
   data() {
-    return {
-      dotPosition: "right",
-    };
+    return {};
   },
   mounted() {},
   methods: {},
