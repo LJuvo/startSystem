@@ -15,11 +15,16 @@
           </div>
         </div>
         <div class="a-flex-row-end">
-          <div class="base-header-btn">上传</div>
-          <div class="base-header-btn">
-            <a @click="toLinkPath('/base/login')">登录</a>
+          <div class="base-header-btn" v-if="userInfo.sessionToken">
+            <a @click="toLinkPath('/product')">上传</a>
           </div>
-          <div class="base-header-btn">注册</div>
+          <div class="base-header-btn" v-if="!userInfo.sessionToken">
+            <a @click="toLinkPath('/login')">登录</a>
+          </div>
+          <!-- <div class="base-header-btn" @click="toRegister()">注册</div> -->
+          <div class="base-header-pic" v-if="userInfo.sessionToken">
+            <img :src="userInfo.head" />
+          </div>
         </div>
       </div>
     </div>
@@ -27,6 +32,7 @@
 </template>
 <script>
 import HeaderCell from "./comps/headerCell.vue";
+import { setTimeout } from "timers";
 export default {
   props: {
     activeIndex: {
@@ -47,10 +53,14 @@ export default {
         { title: "网站导航", url: "/webNav" },
       ],
       headerArr: [],
+      userInfo: {},
     };
   },
   mounted() {
     this.initHeaderArr();
+    this.$nextTick(() => {
+      this.userInfo = this.$store.getters.getUserInfo;
+    });
   },
   methods: {
     initHeaderArr() {
@@ -63,6 +73,7 @@ export default {
     toLinkPath(path) {
       return this.$router.push({ path });
     },
+    toRegister() {},
   },
 };
 </script>
@@ -70,12 +81,26 @@ export default {
 @import url("@/common/amy.less");
 .base-header {
   height: 60px;
-  background: #333;
+  background: #ffe300;
+  color: #282828;
   &-btn {
     height: 60px;
     line-height: 60px;
     padding-left: 20px;
-    color: #fff;
+    color: #282828;
+    a {
+      color: #282828;
+    }
+  }
+  &-pic {
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
 }
 </style>

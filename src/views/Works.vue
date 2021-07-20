@@ -2,18 +2,18 @@
   <base-layout activeIndex="1">
     <div class="amy-base m-bg-white">
       <div class="amy-base-wrapper a-space-12-top a-space-12-bottom">
-        <works-nav></works-nav>
+        <works-nav :baseArr="navArr"></works-nav>
       </div>
     </div>
 
     <div class="amy-base a-space-12-top a-space-32-bottom">
       <div class="amy-base-wrapper">
-        <home-card-list></home-card-list>
+        <home-card-list :cardData="baseWorks"></home-card-list>
       </div>
     </div>
     <div class="amy-base">
       <div class="amy-base-wrapper a-flex-row-center a-space-32-bottom">
-        <amy-btn size="large">分页</amy-btn>
+        <a-pagination :default-current="6" :total="500" />
       </div>
     </div>
     <div class="amy-base m-bg-white">
@@ -43,7 +43,47 @@ export default {
     "works-nav": WorksNav,
   },
   data() {
-    return {};
+    return {
+      navArr: [],
+      baseWorks: [],
+    };
+  },
+  mounted() {
+    this.fetchWorksCategory();
+    this.fetchWorks();
+  },
+  methods: {
+    fetchWorks() {
+      const query = Bmob.Query("works");
+      query.limit(40);
+      query.order("createdAt");
+      query.find().then((res) => {
+        this.baseWorks = res;
+      });
+    },
+    fetchWorksCategory() {
+      let categoryArr = this.$store.getters.getCategory;
+      if (categoryArr && categoryArr.length > 0) {
+        this.setWorksCategory(categoryArr);
+      } else {
+        const query = Bmob.Query("category");
+        query.find().then((res) => {
+          this.$store.dispatch("fetchCategory", res);
+          localStorage.setItem("category", JSON.stringify(res));
+          this.setWorksCategory(res);
+          console.log("fetch category at works ->");
+        });
+      }
+    },
+    setWorksCategory(categoryArr) {
+      const worksCategory = _.find(categoryArr, (o) => o.keyword === "WORKS");
+      const categoryGroup = _.groupBy(categoryArr, "parentId");
+      const temp = _.get(categoryGroup, worksCategory.objectId, []);
+      this.navArr = _.filter(
+        [{ label: "全部作品", url: "" }, , ...temp],
+        (o) => o
+      );
+    },
   },
 };
 </script>

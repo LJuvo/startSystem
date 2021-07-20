@@ -34,9 +34,13 @@ export default {
   width: 120px;
   text-align: center;
   cursor: pointer;
-  color: #fff;
+  // color: #fff;
   &-active {
-    background: #666;
+    // background: #666;
+  }
+  &:hover {
+    background: #ffc107;
+    color: #fff;
   }
 }
 </style>

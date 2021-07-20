@@ -1,5 +1,5 @@
 <template>
-  <div class="a-flex-row-start">
+  <div class="a-flex-row-start home-tab">
     <div
       v-for="(item, index) in headerArr"
       :key="index"
@@ -40,6 +40,12 @@ export default {
 };
 </script>
 <style lang="less" scoped>
+.home-tab {
+  background: #ffffff;
+  padding: 10px 20px;
+  padding-top: 5px;
+  border-radius: 40px;
+}
 .base-tab-cell {
   height: 40px;
   line-height: 40px;

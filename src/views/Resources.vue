@@ -1,23 +1,19 @@
 <template>
-  <base-layout activeIndex="2">
+  <base-layout activeIndex="1">
     <div class="amy-base m-bg-white">
       <div class="amy-base-wrapper a-space-12-top a-space-12-bottom">
-        <works-nav
-          :baseArr="baseNavArr"
-          :activeIndex="navActiveIndex"
-          @on-check="onCheckNav($event)"
-        ></works-nav>
+        <works-nav :baseArr="navArr"></works-nav>
       </div>
     </div>
 
     <div class="amy-base a-space-12-top a-space-32-bottom">
       <div class="amy-base-wrapper">
-        <home-card-list></home-card-list>
+        <home-card-list :cardData="baseWorks"></home-card-list>
       </div>
     </div>
     <div class="amy-base">
       <div class="amy-base-wrapper a-flex-row-center a-space-32-bottom">
-        <amy-btn size="large">分页</amy-btn>
+        <a-pagination :default-current="6" :total="500" />
       </div>
     </div>
     <div class="amy-base m-bg-white">
@@ -48,17 +44,48 @@ export default {
   },
   data() {
     return {
-      baseNavArr: [
-        { title: "全部资源", url: "" },
-        { title: "模型", url: "" },
-        { title: "插件", url: "" },
-      ],
-      navActiveIndex: 0,
+      navArr: [],
+      baseWorks: [],
     };
   },
+  mounted() {
+    this.fetchWorksCategory();
+    this.fetchWorks();
+  },
   methods: {
-    onCheckNav(index) {
-      this.navActiveIndex = index;
+    fetchWorks() {
+      const query = Bmob.Query("works");
+      query.limit(40);
+      query.order("createdAt");
+      query.find().then((res) => {
+        this.baseWorks = res;
+      });
+    },
+    fetchWorksCategory() {
+      let categoryArr = this.$store.getters.getCategory;
+      if (categoryArr && categoryArr.length > 0) {
+        this.setWorksCategory(categoryArr);
+      } else {
+        const query = Bmob.Query("category");
+        query.find().then((res) => {
+          this.$store.dispatch("fetchCategory", res);
+          localStorage.setItem("category", JSON.stringify(res));
+          this.setWorksCategory(res);
+          console.log("fetch category at resources ->");
+        });
+      }
+    },
+    setWorksCategory(categoryArr) {
+      const worksCategory = _.find(
+        categoryArr,
+        (o) => o.keyword === "RESOURCE"
+      );
+      const categoryGroup = _.groupBy(categoryArr, "parentId");
+      const temp = _.get(categoryGroup, worksCategory.objectId, []);
+      this.navArr = _.filter(
+        [{ label: "全部资源", url: "" }, , ...temp],
+        (o) => o
+      );
     },
   },
 };

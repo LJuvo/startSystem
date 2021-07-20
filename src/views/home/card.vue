@@ -1,26 +1,62 @@
 <template>
   <div class="home-card">
-    <div class="home-card-pic"></div>
+    <div class="home-card-pic">
+      <a @click="cardLink()">
+        <img :src="cardInfo.signal" />
+      </a>
+    </div>
     <div class="home-card-info">
-      <h3>标题信息</h3>
-      <span>分类信息</span>
+      <a @click="cardLink()">
+        <h3>{{ cardInfo.title ? cardInfo.title : "" }}</h3>
+      </a>
+      <span>{{ cardInfo.mark ? cardInfo.mark : "" }}</span>
       <div class="home-card-info-btn">
-        <span>查看</span>
-        <span>评论</span>
-        <span>点赞</span>
+        <span>点赞 {{ cardInfo.like ? cardInfo.like : "" }}</span>
+        <span>收藏 {{ cardInfo.collection ? cardInfo.collection : "" }}</span>
+        <span>评论 {{ cardInfo.comment ? cardInfo.comment : "" }}</span>
       </div>
     </div>
     <div class="home-card-author">
       <div class="home-card-author-left">
-        <div class="home-card-author-avatar"></div>
-        <h3>北海老船长</h3>
+        <div class="home-card-author-avatar">
+          <img :src="cardInfo.publisherHead" />
+        </div>
+        <h3>{{ cardInfo.publisherName ? cardInfo.publisherName : "" }}</h3>
       </div>
       <div class="home-card-author-time">
-        <span>一天前</span>
+        <span>{{ currentDate }}前</span>
       </div>
     </div>
   </div>
 </template>
+<script>
+import dayjs from "dayjs";
+export default {
+  props: {
+    cardInfo: {
+      type: Object,
+      default: () => {
+        return {};
+      },
+    },
+  },
+  computed: {
+    currentDate() {
+      let tempDate = this.cardInfo.createdAt
+        ? this.cardInfo.createdAt
+        : new Date();
+      const hours = dayjs(new Date()).diff(dayjs(tempDate), "hour");
+      return hours + "小时";
+    },
+  },
+  methods: {
+    cardLink() {
+      this.$router.push({ path: `/details/${this.cardInfo.objectId}` });
+    },
+  },
+};
+</script>
+
 <style lang="less" scoped>
 .home-card {
   width: 280px;
@@ -53,12 +89,16 @@
     &-btn {
       margin-top: 8px;
       font-size: 12px;
+      span {
+        margin-right: 8px;
+      }
     }
   }
   &-author {
     width: 100%;
     height: 50px;
     padding: 0 15px;
+    padding-bottom: 2px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -77,8 +117,8 @@
       }
     }
     &-avatar {
-      width: 40px;
-      height: 40px;
+      width: 35px;
+      height: 35px;
       background: #999;
       border-radius: 50%;
       overflow: hidden;

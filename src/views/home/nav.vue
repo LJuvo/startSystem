@@ -1,24 +1,45 @@
 <template>
   <div class="nav-wrapper">
     <div class="nav-wrapper-content">
-      <h1>Banner</h1>
+      <a-carousel effect="fade" autoplay>
+        <div class="nav-wrapper-cell" v-for="(item, key) in navData" :key="key">
+          <a :href="item.url">
+            <img :src="item.resource" />
+          </a>
+        </div>
+      </a-carousel>
     </div>
     <div class="nav-wrapper-search">
       <div class="banner-search">
         <input class="banner-search-input" placeholder="最佳搜索" />
-        <amy-btn shape="circle" icon="ios-search"></amy-btn>
+        <amy-btn
+          class="banner-search-btn"
+          shape="circle"
+          icon="ios-search"
+        ></amy-btn>
       </div>
     </div>
   </div>
 </template>
+<script>
+export default {
+  props: {
+    navData: {
+      type: Array,
+      default: () => {
+        return [];
+      },
+    },
+  },
+};
+</script>
+
 <style lang="less" scoped>
 .nav-wrapper {
   height: 500px;
   width: 100%;
-  background: #c4c4c4;
   position: relative;
   &-content {
-    cursor: pointer;
     width: 100%;
     height: 100%;
     text-align: center;
@@ -32,11 +53,20 @@
     top: 240px;
     left: calc(50% - 300px);
   }
+  &-cell {
+    text-align: center;
+    height: 500px;
+    line-height: 500px;
+    background: #c4c4c4;
+    overflow: hidden;
+    cursor: pointer;
+  }
 }
 .banner-search {
   width: 600px;
   height: 60px;
-  color: #666;
+  // color: #fff;
+  // background: rgba(0, 0, 0, 0.6);
   background: #fff;
   border-radius: 30px;
   padding: 4px 20px 4px 30px;
@@ -60,5 +90,18 @@
     border: none;
     font-size: 18px;
   }
+
+  &-btn {
+    // opacity: 0.3;
+  }
 }
+</style>
+<style lang="less" scoped>
+// .ant-carousel >>> .slick-slide {
+//   text-align: center;
+//   height: 160px;
+//   line-height: 160px;
+//   background: #364d79;
+//   overflow: hidden;
+// }
 </style>

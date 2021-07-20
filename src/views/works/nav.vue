@@ -9,7 +9,7 @@
       }"
       @click="checkHeadCell(index)"
     >
-      {{ item.title }}
+      {{ item.label }}
     </div>
   </div>
 </template>
@@ -19,18 +19,7 @@ export default {
     baseArr: {
       type: Array,
       default: () => {
-        return [
-          { title: "全部作品", url: "" },
-          { title: "医疗行业", url: "" },
-          { title: "通信行业", url: "" },
-          { title: "交通行业", url: "" },
-          { title: "航空行业", url: "" },
-          { title: "金融行业", url: "" },
-          { title: "市政行业", url: "" },
-          { title: "警务行业", url: "" },
-          { title: "电力行业", url: "" },
-          { title: "其他行业", url: "" },
-        ];
+        return [];
       },
     },
     activeIndex: {
@@ -42,6 +31,11 @@ export default {
     return {
       headerArr: [],
     };
+  },
+  watch: {
+    baseArr(val) {
+      this.headerArr = val;
+    },
   },
   mounted() {
     this.initHeaderArr();

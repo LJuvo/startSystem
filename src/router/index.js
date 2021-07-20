@@ -1,6 +1,7 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import BaseContent from "@/views/base/base.vue";
+import BlankLayout from "@/components/layout/blankLayout.vue";
 
 Vue.use(VueRouter);
 
@@ -9,20 +10,52 @@ const routes = [
     path: "/",
     name: "HomePage",
     title: "首页",
-    component: () => import("@/views/Home.vue"),
+    component: BlankLayout,
+    children: [
+      {
+        path: "/",
+        name: "HomePage",
+        title: "首页",
+        component: () => import("@/views/Home.vue"),
+      },
+      {
+        path: "works",
+        name: "works",
+        title: "作品",
+        component: () => import("@/views/Works.vue"),
+      },
+      {
+        path: "resources",
+        name: "resources",
+        title: "/素材资源",
+        component: () => import("@/views/Resources.vue"),
+      },
+      {
+        path: "product",
+        name: "product",
+        title: "/作品上传",
+        component: () => import("@/views/product/index.vue"),
+      },
+      {
+        path: "details/:worksId",
+        name: "details",
+        title: "/作品详情",
+        component: () => import("@/views/product/preview.vue"),
+      },
+    ],
   },
-  {
-    path: "/works",
-    name: "works",
-    title: "作品",
-    component: () => import("@/views/Works.vue"),
-  },
-  {
-    path: "/resources",
-    name: "resources",
-    title: "/素材资源",
-    component: () => import("@/views/Resources.vue"),
-  },
+  // {
+  //   path: "/works",
+  //   name: "works",
+  //   title: "作品",
+  //   component: () => import("@/views/Works.vue"),
+  // },
+  // {
+  //   path: "/resources",
+  //   name: "resources",
+  //   title: "/素材资源",
+  //   component: () => import("@/views/Resources.vue"),
+  // },
   {
     path: "/community",
     name: "community",
@@ -50,7 +83,7 @@ const routes = [
     component: () => import("@/views/Chat.vue"),
   },
   {
-    path: "/base",
+    path: "/",
     name: "base",
     title: "基础",
     description: "基础页",
