@@ -1,7 +1,7 @@
 <template>
   <header class="base-header">
     <div class="amy-base-wrapper a-flex-row">
-      <div class="amy-base-logo">LOGO</div>
+      <div class="amy-base-logo">STARERA星纪元</div>
       <div class="a-flex-row-end a-flex-1">
         <div class="a-flex-row-center a-flex-1">
           <div class="a-flex-row-start">
@@ -22,8 +22,10 @@
             <a @click="toLinkPath('/login')">登录</a>
           </div>
           <!-- <div class="base-header-btn" @click="toRegister()">注册</div> -->
-          <div class="base-header-pic" v-if="userInfo.sessionToken">
-            <img :src="userInfo.head" />
+          <div class="base-header-btn" v-if="userInfo.sessionToken">
+            <div class="base-header-pic">
+              <img :src="userInfo.head" />
+            </div>
           </div>
         </div>
       </div>
@@ -84,8 +86,9 @@ export default {
   background: #ffe300;
   color: #282828;
   &-btn {
-    height: 60px;
-    line-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     padding-left: 20px;
     color: #282828;
     a {
@@ -93,9 +96,10 @@ export default {
     }
   }
   &-pic {
-    width: 40px;
-    height: 40px;
-    border-radius: 40px;
+    margin-left: 15px;
+    width: 30px;
+    height: 30px;
+    border-radius: 30px;
     overflow: hidden;
     img {
       width: 100%;
