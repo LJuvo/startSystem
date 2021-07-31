@@ -11,7 +11,10 @@
   "dependencies": {
     "@antv/data-set": "^0.11.7",
     "@antv/g2": "^4.0.15",
+    "@tailwindcss/postcss7-compat": "^2.2.7",
     "ant-design-vue": "^1.6.5",
+    "autoprefixer": "^9.8.6",
+    "awe-dnd": "^0.3.4",
     "axios": "^0.20.0",
     "core-js": "^2.6.5",
     "d3": "^6.2.0",
@@ -19,6 +22,8 @@
     "less": "^3.12.2",
     "less-loader": "^7.0.2",
     "lodash": "^4.17.21",
+    "postcss": "^7.0.36",
+    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.7",
     "vue": "^2.6.10",
     "vue-router": "^3.0.3",
     "vuex": "^3.0.1"
