@@ -6,13 +6,11 @@ import "ant-design-vue/dist/antd.css";
 import router from "./router";
 import _ from "lodash";
 import "tailwindcss/tailwind.css";
-import VueDND from 'awe-dnd';
-// 注册-拖拽组件
-Vue.use(VueDND);
 
 import axios from "axios";
 Vue.prototype.$axios = axios;
 Vue.prototype._ = _;
+Vue.prototype.$EventBus = new Vue();
 
 Vue.config.productionTip = false;
 
