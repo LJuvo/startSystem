@@ -1,0 +1,33 @@
+<html lang="en" class="h-full bg-gray-50 js-focus-visible">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>SCREEN屏占比验证 - STARERA</title>
+    <script src="//vuejs.org/js/vue.min.js"></script>
+    <script type="text/javascript" src="./js/era.js"></script>
+  </head>
+
+  <body class=" bg-gray-200 text-gray-600 h-full w-full">
+    <div id="starera" class="h-full w-full flex flex-col justify-start">
+      <era-frame :options="options"></era-frame>
+    </div>
+  </body>
+
+  <script>
+    new Vue({
+      el: "#starera",
+      data() {
+        return {
+          options: {},
+        };
+      },
+    });
+  </script>
+</html>
