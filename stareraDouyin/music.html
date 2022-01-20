@@ -1,0 +1,258 @@
+<html lang="en" class="h-full bg-gray-50 js-focus-visible">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@starera" />
+    <meta name="twitter:title" content="SVGA" />
+    <meta
+      name="twitter:description"
+      content="Study Douyin/TikTok of Star Era."
+    />
+    <meta property="og:url" content="http://douyin.starera.cn" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="STRA ERA" />
+    <meta
+      property="og:description"
+      content="Study Douyin/TikTok of Star Era."
+    />
+    <meta property="description" content="Study Douyin/TikTok of Star Era." />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="http://unpkg.com/iview/dist/styles/iview.css"
+    />
+    <script
+      type="text/javascript"
+      src="http://vuejs.org/js/vue.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="http://unpkg.com/iview/dist/iview.min.js"
+    ></script>
+    <title>音乐素材 - 星纪元</title>
+    <style>
+      html,
+      body {
+        background: #fefefe;
+        color: #333333;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section id="starera" class=" relative">
+      <div
+        class=" fixed top-0 left-0 z-10 w-full h-10 shadow-md px-3 flex flex-row justify-between items-center bg-white border-b border-gray-200"
+      >
+        <a class="text-gray-400" href="/"
+          ><svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M13.3991 5.50105C13.5944 5.69631 13.5944 6.0129 13.3991 6.20816L9.52933 10.0779L13.2941 13.8427C13.4894 14.038 13.4894 14.3546 13.2941 14.5498L12.2335 15.6105C12.0382 15.8058 11.7216 15.8058 11.5264 15.6105L6.3409 10.425C6.14564 10.2298 6.14564 9.9132 6.3409 9.71794L7.40156 8.65728C7.42466 8.63418 7.44945 8.61382 7.47554 8.59619L11.6313 4.44039C11.8266 4.24513 12.1432 4.24513 12.3384 4.44039L13.3991 5.50105Z"
+              fill="#4E5969"
+            />
+          </svg>
+        </a>
+        <div class=" flex-1 text-center ">音乐素材</div>
+        <a class="text-gray-400" @click="(isShowCategory=true)">
+          <svg
+            width="16"
+            height="16"
+            viewBox="0 0 16 16"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M1.3966 10.5645C1.17757 10.5645 1.00001 10.742 1.00002 10.961L1.0001 14.3723C1.0001 14.4445 1.01979 14.5152 1.05704 14.577C1.17011 14.7646 1.41385 14.825 1.60143 14.7119L4.43079 13.0064C4.48606 12.9731 4.53237 12.9268 4.56569 12.8715C4.67877 12.6839 4.61837 12.4402 4.43079 12.3271L1.60136 10.6214C1.53956 10.5841 1.46876 10.5644 1.3966 10.5645ZM7.29187 12C7.10778 12 6.95854 12.1492 6.95854 12.3333V13C6.95854 13.1841 7.10778 13.3333 7.29187 13.3333H13.9585C14.1426 13.3333 14.2919 13.1841 14.2919 13V12.3333C14.2919 12.1492 14.1426 12 13.9585 12H7.29187ZM2.6252 7C2.44111 7 2.29187 7.14924 2.29187 7.33333V8C2.29187 8.18409 2.44111 8.33333 2.6252 8.33333H13.9585C14.1426 8.33333 14.2919 8.18409 14.2919 8V7.33333C14.2919 7.14924 14.1426 7 13.9585 7H2.6252ZM2.6252 2C2.44111 2 2.29187 2.14924 2.29187 2.33333V3C2.29187 3.18409 2.44111 3.33333 2.6252 3.33333H13.9585C14.1426 3.33333 14.2919 3.18409 14.2919 3V2.33333C14.2919 2.14924 14.1426 2 13.9585 2H2.6252Z"
+              fill="#4E5969"
+            />
+          </svg>
+        </a>
+      </div>
+      <div class=" flex flex-col mt-10 z-0">
+        <div class="  w-full flex-1 flex flex-col p-3">
+          <ul class="flex-1 flex flex-col">
+            <li
+              class="flex flex-col w-full"
+              v-for="(item, key) in categoryList"
+              :key="key"
+            >
+              <h3 class="mt-3" :id="item.title+key">{{item.title}}</h3>
+              <ol class="flex-1 flex flex-col">
+                <dl
+                  class="flex flex-row w-full mt-3 items-center"
+                  v-for="(cell, k) in item.children"
+                  :key="k"
+                >
+                  <div class="flex-1 truncate">{{cell.title}}</div>
+                  <button
+                    class=" ml-3 bg-blue-400 rounded-md text-white py-1 px-3 text-xs"
+                    @click="copyMusicInfo(cell.title)"
+                  >
+                    复制
+                  </button>
+                </dl>
+              </ol>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        v-if="isShowCategory"
+        class=" fixed top-0 left-0 w-screen h-screen bg-opacity-70 bg-black z-20 flex justify-center items-center"
+        @click="closeMask($event)"
+      >
+        <div
+          class=" w-5/6 h-4/5 rounded-md bg-white overflow-hidden flex flex-col"
+          @click="stopPropagation($event)"
+        >
+          <h1 class=" h-10 leading-10 text-center border-b border-gray-200">
+            分类
+          </h1>
+          <ul class="flex-1 flex flex-col overflow-y-auto">
+            <li
+              class="flex flex-row w-full px-4 mt-3"
+              v-for="(item, key) in categoryList"
+              :key="key"
+            >
+              <a
+                :href="'#'+item.title+key"
+                class="flex-1 truncate"
+                @click="selectCategory($event, item.title+key)"
+                >{{item.title}}</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dy-"></div>
+    </section>
+  </body>
+  <script src="/clipboard.js"></script>
+  <script>
+    new Vue({
+      el: "#starera",
+      data: {
+        isShowCategory: false,
+        categoryList: [
+          {
+            title: "动感类",
+            children: [
+              {
+                title: `8.76 ZZZ:/
+    你家宝贝玩过这种玩具吗？带灯光带音乐，还能开合机舱！%热门推荐 @抖音小助手
+    https://v.douyin.com/RWUorXb/ 椱制此链接，咑開Dou音搜索，直接观看视频！`,
+              },
+
+              {
+                title: `1.23 RXZ:/
+    这款鸭鸭跳舞机器人也太酷了吧，带灯光带音乐，还能投射灯光！爱了爱了！@DOU+小助手
+    https://v.douyin.com/RWUWFC9/ 复制此lian接，打kaiDou音搜索，直接觀看視频！`,
+              },
+
+              {
+                title: `5.35 ygO:/ 彩色陀螺大作战，可攻可防又炫酷又好玩儿！
+    https://v.douyin.com/RWUxX93/ 复淛佌链接，打开Dou愔搜索，直接观看視频！`,
+              },
+
+              {
+                title: `7.48 pda:/ 你们玩过这个对战陀螺吗，别人小朋友的的你也要有哦！
+    https://v.douyin.com/RWUgHTG/ 复製此鏈接，打开Dou吟搜索，直接观看视频！`,
+              },
+
+              {
+                title: `7.94 VYZ:/
+    你们还在玩普通的竹蜻蜓吗？这个升级版竹蜻蜓有陀螺有竹蜻蜓只要个位数一共7件套！
+    https://v.douyin.com/RWUvNAC/ 復制佌lian接，打开Dou茵搜索，直接觀看視频！`,
+              },
+            ],
+          },
+          {
+            title: "可爱类",
+            children: [
+              {
+                title: `0.58 Rkc:/
+    变形玩具可以锻炼小朋友动手能力，有两个造型，可以变成机器人，也可变成车子%益智玩具
+    %变形玩具 https://v.douyin.com/RWy9K27/
+    复制佌lian接，打kaiDou音搜索，直接观kan视頻！`,
+              },
+
+              {
+                title: `8.25 AtR:/ 精美切切乐玩具，有力架砧板，好玩有趣！%蔬果切切乐玩具
+    %抖音热门 %玩具推荐 %切切乐玩具 https://v.douyin.com/RWfetNu/
+    复制此鏈接，达开Dou音搜索，直接觀kan視频！`,
+              },
+
+              {
+                title: `0.76 rEH:/ 送给孩子的礼物%学爬玩具 %儿童玩具 %新趋势看我 %网红玩具
+    %宝宝启蒙 %电动玩具 https://v.douyin.com/RWfLU1C/
+    椱制此链接，打开Dou愔搜索，直接观看视频！`,
+              },
+
+              {
+                title: `6.61 XZm:/ 会变形，会旋转的%撞击变形玩具 %儿童玩具 %新趋势看我 %飞机玩具
+    %网红玩具 https://v.douyin.com/RWfLpep/
+    複制此鏈接，咑开Dou音搜索，直接观看视频！`,
+              },
+
+              {
+                title: `9.76 GvS:/ %特技三轮车 %网红玩具 %儿童玩具 %新趋势看我 %抖音双11好物节
+    %电动玩具 https://v.douyin.com/RWfDwoe/
+    复制此链接，打开Dou䜾搜索，直接觀看視頻！`,
+              },
+
+              {
+                title: `3.56 rRK:/ 锻炼孩子手眼协调能力，两种玩法的%钓鱼玩具 %儿童玩具
+    %抖音双11好物节 %新趋势看我 %电动玩具 https://v.douyin.com/RWft8nR/
+    緮制此链接，达开Douyin搜索，値接观kan视频！`,
+              },
+            ],
+          },
+        ],
+      },
+      mounted() {},
+      methods: {
+        closeMask(e) {
+          this.stopPropagation(e);
+          this.isShowCategory = false;
+        },
+        stopPropagation(e) {
+          e.stopPropagation();
+          e.preventDefault();
+        },
+        copyMusicInfo(val) {
+          Clipboard.copy(
+            val,
+            () => {
+              this.$Message.success("复制成功！");
+            },
+            () => {
+              this.$Message.error("复制错误！请手动复制！");
+            }
+          );
+        },
+        selectCategory(e, id) {
+          this.closeMask(e);
+          document.getElementById(id).scrollIntoView();
+        },
+      },
+    });
+  </script>
+</html>

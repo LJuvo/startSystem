@@ -1,0 +1,208 @@
+<html lang="en" class="h-full bg-gray-50 js-focus-visible">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@starera" />
+    <meta name="twitter:title" content="SVGA" />
+    <meta
+      name="twitter:description"
+      content="Study Douyin/TikTok of Star Era."
+    />
+    <meta property="og:url" content="http://douyin.starera.cn" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="STRA ERA" />
+    <meta
+      property="og:description"
+      content="Study Douyin/TikTok of Star Era."
+    />
+    <meta property="description" content="Study Douyin/TikTok of Star Era." />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="http://unpkg.com/iview/dist/styles/iview.css"
+    />
+    <script
+      type="text/javascript"
+      src="http://vuejs.org/js/vue.min.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="http://unpkg.com/iview/dist/iview.min.js"
+    ></script>
+    <title>发布作品素材 - 星纪元</title>
+    <style>
+      html,
+      body {
+        background: #fefefe;
+        color: #333333;
+      }
+      .product-list li:last-child {
+        border-bottom: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section id="starera" class=" relative">
+      <div
+        class=" fixed top-0 left-0 z-10 w-full h-10 shadow-md px-3 flex flex-row justify-between items-center bg-white border-b border-gray-200"
+      >
+        <a class="text-gray-400" href="/"
+          ><svg
+            width="20"
+            height="20"
+            viewBox="0 0 20 20"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              fill-rule="evenodd"
+              clip-rule="evenodd"
+              d="M13.3991 5.50105C13.5944 5.69631 13.5944 6.0129 13.3991 6.20816L9.52933 10.0779L13.2941 13.8427C13.4894 14.038 13.4894 14.3546 13.2941 14.5498L12.2335 15.6105C12.0382 15.8058 11.7216 15.8058 11.5264 15.6105L6.3409 10.425C6.14564 10.2298 6.14564 9.9132 6.3409 9.71794L7.40156 8.65728C7.42466 8.63418 7.44945 8.61382 7.47554 8.59619L11.6313 4.44039C11.8266 4.24513 12.1432 4.24513 12.3384 4.44039L13.3991 5.50105Z"
+              fill="#4E5969"
+            />
+          </svg>
+        </a>
+        <div class=" flex-1 text-center ">发布作品素材</div>
+      </div>
+      <div class=" flex flex-col mt-10 z-0">
+        <div class="  w-full flex-1 flex flex-col p-3">
+          <ul class="flex-1 flex flex-col product-list">
+            <li
+              class="flex flex-col w-full py-2 border-b border-gray-200"
+              v-for="(item, key) in productList"
+              :key="key"
+            >
+              <div class="flex flex-row w-full mb-2">
+                <div class="flex-1 truncate">{{item.title}}</div>
+                <button
+                  v-if="item.code"
+                  class=" ml-3 bg-blue-400 rounded-md text-white py-1 px-2 text-xs"
+                  @click="copyMusicInfo(item.code)"
+                >
+                  复制提取码
+                </button>
+              </div>
+              <div class="w-full flex flex-row text-xs mb-2">
+                素材链接：<a
+                  class="flex-1 truncate text-blue-400"
+                  :href="item.url"
+                  >{{item.url}}</a
+                >
+              </div>
+              <div class="flex flex-row justify-between text-gray-500 text-xs">
+                <span>{{item.date?item.date:'-'}}</span>
+                <span v-if="item.code">提取码：{{item.code}}</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="dy-"></div>
+    </section>
+  </body>
+  <script src="/clipboard.js"></script>
+  <script>
+    new Vue({
+      el: "#starera",
+      data: {
+        productList: [
+          {
+            title: "账号主页包装资料包",
+            url: "https://pan.baidu.com/s/1iUnWHUO6D2dCyej19WUQgw",
+            date: "",
+            code: "cufx",
+          },
+          {
+            title: "素材包：弹射飞机",
+            url: "https://pan.baidu.com/s/1dmAP798SZPg6E7X1YoMuYQ",
+            date: "2021年11月29日",
+            code: "n7ex",
+          },
+          {
+            title: "指尖陀螺新链接",
+            url: "https://pan.baidu.com/s/109l7ZvaOhijyWDZ2yi2Yxg",
+            date: "2021年12月2日",
+            code: "nfs9",
+          },
+          {
+            title: "儿童蜡笔",
+            url: "https://pan.baidu.com/s/1InXd5VFNTDSZBmfDmcnSSQ",
+            date: "2021年12月6日",
+            code: "vmau",
+          },
+          {
+            title: "竹蜻蜓素材包链接:",
+            url: "https://pan.baidu.com/s/1IepF7znJa5ZnrkGmQx7WvQ",
+            date: "2021年12月9日",
+            code: "sngu",
+          },
+          {
+            title: "恐龙碰撞车素材包",
+            url: "https://pan.baidu.com/s/1DmxHGzffoxD-LcYdW__pFA",
+            date: "2021年12月13日",
+            code: "a25b",
+          },
+          {
+            title: "太空鸭",
+            url: "https://pan.baidu.com/s/1hAvb8Cv-c39cqvfIEm-FDw",
+            date: "2021年12月16日",
+            code: "90ox",
+          },
+          {
+            title: "特技翻滚车",
+            url: "https://pan.baidu.com/s/1UaAKliwf8Vl6mGd8V_uDBg",
+            date: "2021年12月20日",
+            code: "plqy",
+          },
+          {
+            title: "虎年国潮红包",
+            url: "https://pan.baidu.com/s/1nsds5QCsTjsGiRKh3G57pg",
+            date: "2021年12月23日",
+            code: "ltha",
+          },
+          {
+            title: "抽签红包",
+            url: "https://pan.baidu.com/s/1LKqQIHFEZQ11CbytvfA70g",
+            date: "2021年12月31日",
+            code: "x879",
+          },
+          {
+            title: "u型牙刷",
+            url: "https://pan.baidu.com/s/1dmmtQXvFWMmYO9KRz2NsEQ",
+            date: "2022年1月11日",
+            code: "7cdw",
+          },
+          {
+            title: "手工串珠",
+            url: "https://pan.baidu.com/s/1D5ed9sNBRg8SBSBiEqV7wg",
+            date: "2022年1月19日",
+            code: "6c3p",
+          },
+        ],
+      },
+      mounted() {},
+      methods: {
+        copyMusicInfo(val) {
+          Clipboard.copy(
+            val,
+            () => {
+              this.$Message.success("复制成功！");
+            },
+            () => {
+              this.$Message.error("复制错误！请手动复制！");
+            }
+          );
+        },
+      },
+    });
+  </script>
+</html>

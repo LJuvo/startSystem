@@ -1,0 +1,279 @@
+<html lang="en" class="h-full bg-gray-50 js-focus-visible">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@starera" />
+    <meta name="twitter:title" content="SVGA" />
+    <meta
+      name="twitter:description"
+      content="Study Douyin/TikTok of Star Era."
+    />
+    <meta property="og:url" content="http://douyin.starera.cn" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="STRA ERA" />
+    <meta
+      property="og:description"
+      content="Study Douyin/TikTok of Star Era."
+    />
+    <meta property="description" content="Study Douyin/TikTok of Star Era." />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>从爆款到爆单 - 星纪元</title>
+    <style>
+      html,
+      body {
+        background: #fefefe;
+        color: #333333;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section id="starera">
+      <div class="h-full flex flex-col">
+        <div
+          class=" h-10 shadow-md px-3 flex flex-row justify-between items-center"
+        >
+          <a class="text-gray-400" href="/"
+            ><svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M13.3991 5.50105C13.5944 5.69631 13.5944 6.0129 13.3991 6.20816L9.52933 10.0779L13.2941 13.8427C13.4894 14.038 13.4894 14.3546 13.2941 14.5498L12.2335 15.6105C12.0382 15.8058 11.7216 15.8058 11.5264 15.6105L6.3409 10.425C6.14564 10.2298 6.14564 9.9132 6.3409 9.71794L7.40156 8.65728C7.42466 8.63418 7.44945 8.61382 7.47554 8.59619L11.6313 4.44039C11.8266 4.24513 12.1432 4.24513 12.3384 4.44039L13.3991 5.50105Z"
+                fill="#4E5969"
+              />
+            </svg>
+          </a>
+          <div class=" flex-1 text-center ">从爆款到爆单</div>
+        </div>
+        <div class="flex flex-col">
+          <div class="h-60 w-full flex bg-black">
+            <video
+              id="player"
+              controls
+              class="flex-1"
+              style="height: inherit"
+              v-if="videoInfo.url"
+              :src="videoInfo.url"
+            />
+          </div>
+          <div class="p-3">
+            <span class="text-gray-400">速率切换:</span>
+            <button
+              v-for="(item,key) in rotateArr"
+              :key="key"
+              class="ml-4"
+              @click="changeRotate(item)"
+              :class="{
+                'text-yellow-300':(currentRotate ===item)
+              }"
+            >
+              {{ item }}x
+            </button>
+          </div>
+        </div>
+        <hr />
+        <div class="w-full flex-1 flex flex-col overflow-y-auto p-3">
+          <div
+            class="w-full mb-3 cursor-pointer"
+            v-for="(item, key) in videoList"
+            :key="key"
+            @click="selectVideo(item)"
+            :class="{
+              'text-yellow-300':(videoInfo.title ===item.title)
+            }"
+          >
+            {{ item.title }}
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script>
+    new Vue({
+      el: "#starera",
+      data: {
+        rotateArr: [1, 1.5, 2, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 3, 3.5, 4, 4.5, 5],
+        videoList: [
+          {
+            title: "彩蛋课--让视频更清晰的方法和步骤",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632647965633.mp4",
+          },
+          {
+            title: "理论1.账号定位-垂直定位+账号包装",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632648022145.mp4",
+          },
+          {
+            title: "理论2.账号定位-竞对分析+人设定位",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632648074762.mp4",
+          },
+          {
+            title: "理论3.爆款万能公式-人",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632648112418.mp4",
+          },
+          {
+            title: "理论4.爆款万能公式-货",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632648144386.mp4",
+          },
+          {
+            title: "理论5.爆款万能公式-场(上)",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632648184715.mp4",
+          },
+          {
+            title: "理论6.爆款万能公式-场(下)",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632648389332.mp4",
+          },
+          {
+            title: "剪辑基础课 第一节 成片",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1639031178108.mp4",
+          },
+          {
+            title: "剪辑基础课 第二节 成片",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1639031224683.mp4",
+          },
+          {
+            title: "剪辑基础课 第三节 成片",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1639031262645.mp4",
+          },
+          {
+            title: "剪辑基础课 第四节 成片",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1639031313464.mp4",
+          },
+          {
+            title: "剪辑基础课 第五节 成片",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1639031354357.mp4",
+          },
+          {
+            title: "剪辑基础课 第六节 成片",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1639031385263.mp4",
+          },
+          {
+            title: "剪辑基础课 第七节 成片",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1639031449731.mp4",
+          },
+          {
+            title: "实操1.预备课(必看)",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1638873055951.mp4",
+          },
+          {
+            title: "实操2.账号包装、涨粉技巧",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1638873153408.mp4",
+          },
+          {
+            title: "实操3.开通橱窗",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1638873254295.mp4",
+          },
+          {
+            title: "实操4.脚本使用&素材领取",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1639125220274.mp4",
+          },
+          {
+            title: "实操5.挂车发布",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1638873356063.mp4",
+          },
+          {
+            title: "理论7.一部手机拍爆款-产品展示",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632399218480.mp4",
+          },
+          {
+            title: "理论8.一部手机拍爆款-过程展示",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632469705688.mp4",
+          },
+          {
+            title: "理论9.一部手机拍爆款-知识分享",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632399677352.mp4",
+          },
+          {
+            title: "理论10.一部手机拍爆款-产品测评",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632399828280.mp4",
+          },
+          {
+            title: "理论11.一部手机拍爆款-故事传递",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632399979723.mp4",
+          },
+          {
+            title: "理论12.橱窗进阶全攻略-快手小店",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632400339487.mp4",
+          },
+          {
+            title: "理论13.橱窗进阶全攻略-抖音小店",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632400653821.mp4",
+          },
+          {
+            title: "理论14.推广助力来爆单-DOU+",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632401035700.mp4",
+          },
+          {
+            title: "理论15.推广助力来爆单-粉条",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632401555017.mp4",
+          },
+          {
+            title: "理论16.精细化运营大热卖",
+            url:
+              "https://img.moushikeji.com/book_resources/sourceUrl1632402328903.mp4",
+          },
+        ],
+        videoInfo: {
+          title: "",
+          url: "",
+        },
+        currentRotate: 1,
+      },
+      mounted() {
+        this.selectVideo(this.videoList[0]);
+      },
+      methods: {
+        selectVideo(val) {
+          this.videoInfo = val;
+        },
+        changeRotate(val) {
+          this.currentRotate = val;
+          const player = document.getElementById("player");
+          player.playbackRate = val;
+          this.$forceUpdate();
+        },
+      },
+    });
+  </script>
+</html>

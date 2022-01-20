@@ -1,0 +1,245 @@
+<html lang="en" class="h-full bg-gray-50 js-focus-visible">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:site" content="@starera" />
+    <meta name="twitter:title" content="SVGA" />
+    <meta
+      name="twitter:description"
+      content="Study Douyin/TikTok of Star Era."
+    />
+    <meta property="og:url" content="http://douyin.starera.cn" />
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="STRA ERA" />
+    <meta
+      property="og:description"
+      content="Study Douyin/TikTok of Star Era."
+    />
+    <meta property="description" content="Study Douyin/TikTok of Star Era." />
+    <link
+      href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <title>名嘴口播IP打造 - 星纪元</title>
+    <style>
+      html,
+      body {
+        background: #fefefe;
+        color: #333333;
+      }
+    </style>
+  </head>
+
+  <body>
+    <section id="starera">
+      <div class="h-full flex flex-col">
+        <div
+          class=" h-10 shadow-md px-3 flex flex-row justify-between items-center"
+        >
+          <a class="text-gray-400" href="/"
+            ><svg
+              width="20"
+              height="20"
+              viewBox="0 0 20 20"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M13.3991 5.50105C13.5944 5.69631 13.5944 6.0129 13.3991 6.20816L9.52933 10.0779L13.2941 13.8427C13.4894 14.038 13.4894 14.3546 13.2941 14.5498L12.2335 15.6105C12.0382 15.8058 11.7216 15.8058 11.5264 15.6105L6.3409 10.425C6.14564 10.2298 6.14564 9.9132 6.3409 9.71794L7.40156 8.65728C7.42466 8.63418 7.44945 8.61382 7.47554 8.59619L11.6313 4.44039C11.8266 4.24513 12.1432 4.24513 12.3384 4.44039L13.3991 5.50105Z"
+                fill="#4E5969"
+              />
+            </svg>
+          </a>
+          <div class=" flex-1 text-center ">名嘴口播IP打造</div>
+        </div>
+        <div class="flex flex-col">
+          <div class="h-60 w-full flex bg-black">
+            <video
+              id="player"
+              controls
+              class="flex-1"
+              style="height: inherit"
+              v-if="videoInfo.url"
+              :src="videoInfo.url"
+            />
+          </div>
+          <div class="p-3 ">
+            <span class="text-gray-400">速率切换:</span>
+            <button
+              v-for="(item,key) in rotateArr"
+              :key="key"
+              class="ml-4 "
+              @click="changeRotate(item)"
+              :class="{
+                'text-yellow-300':(currentRotate ===item)
+              }"
+            >
+              {{ item }}x
+            </button>
+          </div>
+        </div>
+        <hr />
+        <div class="w-full flex-1 flex flex-col overflow-y-auto p-3">
+          <div
+            class="w-full mb-3 cursor-pointer"
+            v-for="(item, key) in videoList"
+            :key="key"
+            @click="selectVideo(item)"
+            :class="{
+              'text-yellow-300':(videoInfo.title ===item.title)
+            }"
+          >
+            {{key+1}}.{{ item.title }}
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2"></script>
+  <script>
+    new Vue({
+      el: "#starera",
+      data: {
+        rotateArr: [1, 1.5, 2, 2.2, 2.3, 2.4, 2.5, 2.6, 2.7, 3, 3.5, 4, 4.5, 5],
+        videoList: [
+          {
+            title: "课程介绍-九步打造各行业口播达人",
+            code: "1637042100862",
+          },
+          {
+            title: "账号搭建-从0-1起号不踩坑",
+            code: "1637042192452",
+          },
+          {
+            title: "平台规则-搞懂红线规则避开雷区",
+            code: "1637042318066",
+          },
+          {
+            title: "定位四板斧-吸引精准粉丝易变现",
+            code: "1637043948002",
+          },
+          {
+            title: "人设符号-增加记忆点让观众记住你",
+            code: "1637053217304",
+          },
+          {
+            title: "账号对标-四步找准参考账号",
+            code: "1637032658364",
+          },
+          {
+            title: "主页装修-主页四要素让吸粉更精准",
+            code: "1637031230748",
+          },
+          {
+            title: "个性签名-签名设置三招提升关注率",
+            code: "1637044890714",
+          },
+          {
+            title: "创作心法-内容三要素搞懂用户需求",
+            code: "1637222537798",
+          },
+          {
+            title: "创作方向-五个创作方向打造爆款视频",
+            code: "1637823970664",
+          },
+          {
+            title: "选题方法-黄金选题法提升爆款率",
+            code: "1637321033167",
+          },
+          {
+            title: "创作流程-小白也能上手的文案三段论",
+            code: "1637824348704",
+          },
+          {
+            title: "创作公式-适合各行业的万能创作公式",
+            code: "1637842909556",
+          },
+          {
+            title: "文案小改-文案小改让爆款脱颖而出",
+            code: "1638002803013",
+          },
+          {
+            title: "创作技巧-黄金三秒法则提升观众留存",
+            code: "1638002985922",
+          },
+          {
+            title: "数据提升-认识作品数据找到优化方向",
+            code: "1638268729617",
+          },
+          {
+            title: "完播率-学会这四点完播率暴涨",
+            code: "1638268947778",
+          },
+          {
+            title: "评论率-记住这五点引爆评论区",
+            code: "1638848996138",
+          },
+          {
+            title: "点赞率-提高点赞率的万能话术",
+            code: "1638849138922",
+          },
+          {
+            title: "转发率-特定话术引导用户转发",
+            code: "1638269636558",
+          },
+          { title: "关注率-学会这三招涨粉率飙升", code: "1638269934777" },
+          {
+            title: "演绎实操-如何读好一个稿子(实操演示)",
+            code: "1638270136993",
+          },
+          { title: "情绪演绎-五技巧提升情绪感染力", code: "1638272210321" },
+          { title: "节奏把控-把控节奏感告别朗读生硬", code: "1638272409582" },
+          { title: "练习技巧-找对方法提高练习效率", code: "1638272516746" },
+          { title: "录制实操-录制流程呈现(实操演示)", code: "1638501450566" },
+          { title: "录制技巧-横屏竖屏如何选择", code: "1638510071094" },
+          { title: "镜头感-三招克服镜头前恐惧", code: "1638515718446" },
+          { title: "录制贴士-三个小锦囊解决手足无措", code: "1638520319975" },
+          {
+            title: "剪辑教学-四招学会口播剪辑(实操演示)",
+            code: "1638782294203",
+          },
+          {
+            title: "封面技巧-选好封面提升点击率",
+            code: "1638782602458",
+          },
+          {
+            title: "热门标题-六大热门标题公式提升完播率",
+            code: "1638788269009",
+          },
+          { title: "发布运营-找准发布时间飙升流量池", code: "1638935969265" },
+        ],
+        videoInfo: {
+          title: "",
+          url: "",
+        },
+        currentRotate: 1,
+      },
+      mounted() {
+        this.videoList.forEach((ele) => {
+          ele.url =
+            "https://img.moushikeji.com/book_resources/sourceUrl" +
+            ele.code +
+            ".mp4";
+        });
+        this.selectVideo(this.videoList[0]);
+      },
+      methods: {
+        selectVideo(val) {
+          this.videoInfo = val;
+        },
+        changeRotate(val) {
+          this.currentRotate = val;
+          const player = document.getElementById("player");
+          player.playbackRate = val;
+          this.$forceUpdate();
+        },
+      },
+    });
+  </script>
+</html>
